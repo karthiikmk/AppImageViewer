@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppImageViewer
 
 class ViewController: UIViewController {
 
