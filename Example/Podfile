@@ -2,10 +2,5 @@ use_frameworks!
 
 target 'AppImageViewer_Example' do
   pod 'AppImageViewer', :path => '../'
-
-  target 'AppImageViewer_Tests' do
-    inherit! :search_paths
-
-    
-  end
+ 
 end
