@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppImageViewer'
-  s.version          = '0.1.0'
+  s.version          = '1.0'
   s.summary          = 'A great framework to viewer you images gracefully.'
 s.description      = "Image viewing will be great with this. really fun. all you need plug and and play with your waves. yay yay. simple isn't it !!"
 
@@ -18,7 +18,10 @@ s.description      = "Image viewing will be great with this. really fun. all you
      'AppImageViewer' => ['AppImageViewer/Assets/*.png']
    }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+    s.resource_bundles = {
+    'Notify' => ['AppImageViewer/Assets/**/*.{xcassets}']
+    }
+
   s.frameworks = 'UIKit'
 
 end
