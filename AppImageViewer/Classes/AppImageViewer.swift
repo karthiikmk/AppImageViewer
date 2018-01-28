@@ -6,7 +6,8 @@
 
 import UIKit
 
-@objc public protocol ImageViewerDelegate {
+@objc public protocol AppImageViewerDelegate {
+    
     @objc optional func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer)
     @objc optional func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer)
     @objc optional func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int)
@@ -61,7 +62,7 @@ open class AppImageViewer: UIViewController {
     fileprivate var controlVisibilityTimer: Timer!
     
     // delegate
-    open weak var delegate: ImageViewerDelegate?
+    open weak var delegate: AppImageViewerDelegate?
 
     // statusbar initial state
     private var statusbarHidden: Bool = UIApplication.shared.isStatusBarHidden
@@ -114,17 +115,13 @@ open class AppImageViewer: UIViewController {
     // MARK: - override
     override open func viewDidLoad() {
         super.viewDidLoad()
-        configureAppearance()
-        configurePagingScrollView()
-        configureGestureControl()
-        configureActionView()
-        configureToolbar()
-
-        animator.willPresent(self)
+        
+        self.configure()
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         reloadData()
         
         var i = 0
@@ -162,12 +159,24 @@ open class AppImageViewer: UIViewController {
     }
     
     // MARK: - initialize / setup
+    open func configure() {
+        
+        configureAppearance()
+        configurePagingScrollView()
+        configureGestureControl()
+        configureActionView()
+        configureToolbar()
+        
+        animator.willPresent(self)
+    }
+    
     open func reloadData() {
         performLayout()
         view.setNeedsLayout()
     }
     
     open func performLayout() {
+        
         isPerformingLayout = true
 
         // reset local cache
@@ -210,6 +219,7 @@ open class AppImageViewer: UIViewController {
 // MARK: - Public Function For Customizing Buttons
 
 public extension AppImageViewer {
+    
     func updateCloseButton(_ image: UIImage, size: CGSize? = nil) {
         actionView.updateCloseButton(image: image, size: size)
     }

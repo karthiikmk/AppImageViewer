@@ -2,5 +2,4 @@ use_frameworks!
 
 target 'AppImageViewer_Example' do
   pod 'AppImageViewer', :path => '../'
- 
 end

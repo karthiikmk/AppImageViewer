@@ -9,7 +9,7 @@
 import UIKit
 import AppImageViewer
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AppImageViewerDelegate {
 
     @IBOutlet weak var imageview1: UIImageView!{
         didSet {
@@ -44,11 +44,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
@@ -59,11 +54,20 @@ class ViewController: UIViewController {
         case 1, 2, 3:
             let appImage = ViewerImage.appImage(forImage: tappedImage.image!)
             let viewer = AppImageViewer(originImage: tappedImage.image!, photos: [appImage], animatedFromView: tappedImage)
+            viewer.delegate = self
             present(viewer, animated: true, completion: nil)
             
         default:
             break
         }
+    }
+    
+    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer) {
+        print("share button tapped")
+    }
+    
+    func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer) {
+        
     }
 }
 
