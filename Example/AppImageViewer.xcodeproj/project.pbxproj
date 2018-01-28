@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0F1EBA993A6A875FCAF61124 /* Pods_AppImageViewer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96019A36F481D71E602BD983 /* Pods_AppImageViewer_Example.framework */; };
+		25EC9B34201DCBA7000A146F /* image005.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25EC9B33201DCBA7000A146F /* image005.jpg */; };
+		25EC9B38201DCBB0000A146F /* image004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25EC9B36201DCBB0000A146F /* image004.jpg */; };
+		25EC9B3A201DCBFC000A146F /* image007.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25EC9B39201DCBFB000A146F /* image007.jpg */; };
 		25ECCA59201CC2BA000319FF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 25ECCA58201CC2BA000319FF /* .gitignore */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25EC9B33201DCBA7000A146F /* image005.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image005.jpg; sourceTree = "<group>"; };
+		25EC9B36201DCBB0000A146F /* image004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image004.jpg; sourceTree = "<group>"; };
+		25EC9B39201DCBFB000A146F /* image007.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image007.jpg; sourceTree = "<group>"; };
 		25ECCA58201CC2BA000319FF /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4480880473452E63112C24A6 /* Pods-AppImageViewer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppImageViewer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppImageViewer_Example/Pods-AppImageViewer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4B7BABB81727C81EB126B6BE /* Pods_AppImageViewer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppImageViewer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +83,9 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				25EC9B33201DCBA7000A146F /* image005.jpg */,
+				25EC9B39201DCBFB000A146F /* image007.jpg */,
+				25EC9B36201DCBB0000A146F /* image004.jpg */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -203,8 +212,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				25ECCA59201CC2BA000319FF /* .gitignore in Resources */,
+				25EC9B38201DCBB0000A146F /* image004.jpg in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				25EC9B34201DCBA7000A146F /* image005.jpg in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				25EC9B3A201DCBFC000A146F /* image007.jpg in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

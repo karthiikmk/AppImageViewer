@@ -20,11 +20,53 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Sb-UU-A92">
+                                <rect key="frame" x="67" y="142" width="240" height="384"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image005.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0iD-7F-qed">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="2dv-9X-eez"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image004.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="8ww-OP-33W">
+                                        <rect key="frame" x="0.0" y="128" width="240" height="128"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image007.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KzI-tp-bHJ">
+                                        <rect key="frame" x="0.0" y="256" width="240" height="128"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="384" id="1t9-O6-yD0"/>
+                                    <constraint firstItem="8ww-OP-33W" firstAttribute="top" secondItem="0iD-7F-qed" secondAttribute="bottom" id="Dn2-1O-9gh"/>
+                                    <constraint firstAttribute="width" constant="240" id="QCM-4o-1Sz"/>
+                                    <constraint firstAttribute="trailing" secondItem="0iD-7F-qed" secondAttribute="trailing" id="YtL-gt-UIY"/>
+                                    <constraint firstItem="0iD-7F-qed" firstAttribute="top" secondItem="8Sb-UU-A92" secondAttribute="top" id="opm-A2-Us2"/>
+                                    <constraint firstItem="0iD-7F-qed" firstAttribute="leading" secondItem="8Sb-UU-A92" secondAttribute="leading" id="uAB-q1-uJC"/>
+                                    <constraint firstItem="8ww-OP-33W" firstAttribute="centerY" secondItem="8Sb-UU-A92" secondAttribute="centerY" id="um3-x2-Olz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8Sb-UU-A92" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="Fkb-xN-qZU"/>
+                            <constraint firstItem="8Sb-UU-A92" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="aAk-b3-COp"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageview1" destination="0iD-7F-qed" id="Ito-zE-h4w"/>
+                        <outlet property="imageview2" destination="8ww-OP-33W" id="sIm-Ur-2N8"/>
+                        <outlet property="imageview3" destination="KzI-tp-bHJ" id="juH-tR-PTw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="image004.jpg" width="2000" height="1335"/>
+        <image name="image005.jpg" width="2000" height="1335"/>
+        <image name="image007.jpg" width="2000" height="1335"/>
+    </resources>
 </document>

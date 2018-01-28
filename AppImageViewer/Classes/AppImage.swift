@@ -15,14 +15,13 @@ import Foundation
     var contentMode: UIViewContentMode { get set }
 }
 
-// MARK: - SKPhoto
+// MARK: - AppImage
 open class AppImage: NSObject, AppImageProtocol {
     
     open var index: Int = 0
     open var underlyingImage: UIImage!
     open var contentMode: UIViewContentMode = .scaleAspectFill
     
-    // MARK: > Base Init
     override init() {
         super.init()
     }
@@ -31,9 +30,11 @@ open class AppImage: NSObject, AppImageProtocol {
         self.init()
         underlyingImage = image
     }
-    
+
+
     // MARK: - Static Function
     public static func appImage(forImage image: UIImage) -> AppImage {
         return AppImage(image: image)
     }
 }
+
