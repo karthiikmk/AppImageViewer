@@ -1,28 +1,57 @@
 //
-//  UIImage+Rotation.swift
-//  SKPhotoBrowser
+//  AppExtensions.swift
+//  AppImageViewer
 //
-//  Created by K Rummler on 15/03/16.
-//  Copyright © 2016 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/28/18.
 //
 
+import Foundation
 import UIKit
 
+internal extension UIApplication {
+    
+    var preferredApplicationWindow: UIWindow? {
+        // Since delegate window is of type UIWindow??, we have to
+        // unwrap it twice to be sure the window is not nil
+        if let appWindow = UIApplication.shared.delegate?.window, let window = appWindow {
+            return window
+        } else if let window = UIApplication.shared.keyWindow {
+            return window
+        }
+        
+        return nil
+    }
+}
+
+extension UIView {
+    
+    func addCornerRadiusAnimation(_ from: CGFloat, to: CGFloat, duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath: "cornerRadius")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        self.layer.add(animation, forKey: "cornerRadius")
+        self.layer.cornerRadius = to
+    }
+}
+
 extension UIImage {
+    
     func rotateImageByOrientation() -> UIImage {
         // No-op if the orientation is already correct
         guard self.imageOrientation != .up else {
             return self
         }
-
+        
         let transform = calculateAffineTransform()
-
+        
         // Now we draw the underlying CGImage into a new context, applying the transform
         // calculated above.
         let ctx = CGContext(data: nil, width: Int(self.size.width), height: Int(self.size.height),
-            bitsPerComponent: self.cgImage!.bitsPerComponent, bytesPerRow: 0,
-            space: self.cgImage!.colorSpace!,
-            bitmapInfo: self.cgImage!.bitmapInfo.rawValue)
+                            bitsPerComponent: self.cgImage!.bitsPerComponent, bytesPerRow: 0,
+                            space: self.cgImage!.colorSpace!,
+                            bitmapInfo: self.cgImage!.bitmapInfo.rawValue)
         ctx!.concatenate(transform)
         
         switch self.imageOrientation {
@@ -40,43 +69,42 @@ extension UIImage {
             return self
         }
     }
-
+    
     fileprivate func calculateAffineTransform() -> CGAffineTransform {
         // We need to calculate the proper transformation to make the image upright.
         // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
         var transform = CGAffineTransform.identity
-
+        
         switch self.imageOrientation {
         case .down, .downMirrored:
             transform = transform.translatedBy(x: self.size.width, y: self.size.height)
             transform = transform.rotated(by: .pi)
-
+            
         case .left, .leftMirrored:
             transform = transform.translatedBy(x: self.size.width, y: 0)
             transform = transform.rotated(by: .pi / 2)
-
+            
         case .right, .rightMirrored:
             transform = transform.translatedBy(x: 0, y: self.size.height)
             transform = transform.rotated(by: -.pi / 2)
-
+            
         default:
             break
         }
-
+        
         switch self.imageOrientation {
         case .upMirrored, .downMirrored:
             transform = transform.translatedBy(x: self.size.width, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
-
+            
         case .leftMirrored, .rightMirrored:
             transform = transform.translatedBy(x: self.size.height, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
-
+            
         default:
             break
         }
-
+        
         return transform
     }
 }
-
