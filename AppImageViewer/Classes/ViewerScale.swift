@@ -1,9 +1,7 @@
 //
-//  SKMesurement.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by 鈴木 啓司 on 2016/08/09.
-//  Copyright © 2016年 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import Foundation

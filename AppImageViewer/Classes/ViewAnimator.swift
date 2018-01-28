@@ -1,9 +1,7 @@
 //
-//  SKAnimator.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by keishi suzuki on 2016/08/09.
-//  Copyright © 2016 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import UIKit

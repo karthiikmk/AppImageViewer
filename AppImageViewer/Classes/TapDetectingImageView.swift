@@ -1,9 +1,7 @@
 //
-//  SKDetectingImageView.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by suzuki_keishi on 2015/10/01.
-//  Copyright © 2015 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import UIKit

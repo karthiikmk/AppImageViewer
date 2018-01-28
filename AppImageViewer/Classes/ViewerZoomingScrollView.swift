@@ -1,16 +1,14 @@
 //
-//  SKZoomingScrollView.swift
-//  SKViewExample
+//  AppImageViewer
 //
-//  Created by suzuki_keihsi on 2015/10/01.
-//  Copyright © 2015 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import UIKit
 
 open class ViewerZoomingScrollView: UIScrollView {
     
-    var photo: AppImageProtocol! {
+    var photo: ViewerImageProtocol! {
         didSet {
             imageView.image = nil
             if photo != nil && photo.underlyingImage != nil {
@@ -226,8 +224,8 @@ extension ViewerZoomingScrollView: UIScrollViewDelegate {
     }
 }
 
-// MARK: - SKDetectingViewDelegate
-extension ViewerZoomingScrollView: SKDetectingViewDelegate {
+// MARK: > Tap Detecting view delegate
+extension ViewerZoomingScrollView: TapDetectingViewDelegate {
     
     func handleSingleTap(_ view: UIView, touch: UITouch) {
         
@@ -249,7 +247,7 @@ extension ViewerZoomingScrollView: SKDetectingViewDelegate {
     }
 }
 
-// MARK: - SKDetectingImageViewDelegate
+// MARK: > Tap Detecting imageview delegate
 extension ViewerZoomingScrollView: TapDetectingImageViewDelegate {
     
     func handleImageViewSingleTap(_ touchPoint: CGPoint) {

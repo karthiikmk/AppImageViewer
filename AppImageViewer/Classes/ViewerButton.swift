@@ -1,9 +1,7 @@
 //
-//  SKButtons.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by 鈴木 啓司 on 2016/08/09.
-//  Copyright © 2016年 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import Foundation
@@ -94,10 +92,7 @@ class ViewerCloseButton: ViewerImageButton {
             return custom
         }
         
-        let close = UIImage(named: "SKPhotoBrowser.bundle/images/btn_common_close_wh",
-            in: bundle, compatibleWith: nil) ?? UIImage()
-        
-        return close
+        return AppImage.close.image
     }
 
     override var margin: CGFloat {
@@ -117,10 +112,7 @@ class ViewerDeleteButton: ViewerImageButton {
             return custom
         }
         
-        let more = UIImage(named: "SKPhotoBrowser.bundle/images/btn_common_delete_wh",
-                            in: bundle, compatibleWith: nil) ?? UIImage()
-        
-        return more
+        return UIImage()
     }
     
     override var margin: CGFloat {

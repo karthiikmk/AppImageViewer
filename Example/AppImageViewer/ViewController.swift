@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         switch tappedImage.tag {
             
         case 1, 2, 3:
-            let appImage = AppImage.appImage(forImage: tappedImage.image!)
+            let appImage = ViewerImage.appImage(forImage: tappedImage.image!)
             let viewer = AppImageViewer(originImage: tappedImage.image!, photos: [appImage], animatedFromView: tappedImage)
             present(viewer, animated: true, completion: nil)
             

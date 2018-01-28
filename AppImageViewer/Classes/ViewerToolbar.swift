@@ -1,9 +1,7 @@
 //
-//  SKToolbar.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by keishi_suzuki on 2017/12/20.
-//  Copyright © 2017年 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import Foundation
@@ -40,16 +38,14 @@ class ViewerToolbar: UIView {
     
     func setupToolbar() {
         
-         let image = UIImage(named: "SKPhotoBrowser.bundle/images/btn_common_share_wh",
-            in: bundle, compatibleWith: nil) ?? UIImage()
-        
         guard let brower  = self.browser else {
             return
         }
         
         let x = brower.shareButtonSide == .left ? self.frame.origin.x + ViewerButtonConfig.padding : self.frame.width - 55
         let btn = UIButton(frame: CGRect(x: x, y: 0, width: 38, height: 38))
-        btn.setImage(image, for: .normal)
+        btn.setImage(AppImage.share.image, for: .normal)
+        btn.setImage(AppImage.share.image, for: .selected)
         btn.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         btn.layer.cornerRadius = btn.frame.height/2
         btn.clipsToBounds = true

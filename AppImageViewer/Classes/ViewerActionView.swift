@@ -1,14 +1,12 @@
 //
-//  SKOptionalActionView.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by keishi_suzuki on 2017/12/19.
-//  Copyright © 2017年 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import UIKit
 
-class SKActionView: UIView {
+class ViewerActionView: UIView {
     
     internal weak var browser: AppImageViewer?
     internal var closeButton: ViewerCloseButton!
@@ -84,7 +82,7 @@ class SKActionView: UIView {
     }
 }
 
-extension SKActionView {
+extension ViewerActionView {
     
     func configureCloseButton(image: UIImage? = nil, size: CGSize? = nil) {
         

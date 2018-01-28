@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-@objc public protocol AppImageProtocol: NSObjectProtocol {
+@objc public protocol ViewerImageProtocol: NSObjectProtocol {
     
     var index: Int { get set }
     var underlyingImage: UIImage! { get }
@@ -16,7 +16,7 @@ import Foundation
 }
 
 // MARK: - AppImage
-open class AppImage: NSObject, AppImageProtocol {
+open class ViewerImage: NSObject, ViewerImageProtocol {
     
     open var index: Int = 0
     open var underlyingImage: UIImage!
@@ -33,8 +33,8 @@ open class AppImage: NSObject, AppImageProtocol {
 
 
     // MARK: - Static Function
-    public static func appImage(forImage image: UIImage) -> AppImage {
-        return AppImage(image: image)
+    public static func appImage(forImage image: UIImage) -> ViewerImage {
+        return ViewerImage(image: image)
     }
 }
 

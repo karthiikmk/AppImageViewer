@@ -1,14 +1,12 @@
 //
-//  SKPhotoBrowser.swift
-//  SKViewExample
+//  AppImageViewer
 //
-//  Created by suzuki_keishi on 2015/10/01.
-//  Copyright © 2015 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import UIKit
 
-@objc public protocol SKPhotoBrowserDelegate {
+@objc public protocol ImageViewerDelegate {
     @objc optional func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer)
     @objc optional func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer)
     @objc optional func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int)
@@ -19,17 +17,16 @@ import UIKit
     @objc optional func controlsVisibilityToggled(_ browser: AppImageViewer, hidden: Bool)
 }
 
-public enum buttonVisibleSide {
+public enum ButtonVisibleSide {
     case left
     case right
 }
 
-// MARK: - SKPhotoBrowser
 open class AppImageViewer: UIViewController {
     
     // config options
     open var displayDeleteButton: Bool = false
-    open var shareButtonSide: buttonVisibleSide = .left
+    open var shareButtonSide: ButtonVisibleSide = .left
     open var isCustomShare: Bool = true
     open var enableZoomBlackArea: Bool = false
     open var disableVerticalSwipe: Bool = false
@@ -37,14 +34,14 @@ open class AppImageViewer: UIViewController {
     
     // open function
     open var currentPageIndex: Int = 0
-    open var photos: [AppImageProtocol] = []
+    open var photos: [ViewerImageProtocol] = []
     
     internal lazy var pagingScrollView: ViewerPagingScrollView = ViewerPagingScrollView(frame: self.view.frame, browser: self)
     
     // animation
     fileprivate let animator: ViewAnimator = .init()
     
-    fileprivate var actionView: SKActionView!
+    fileprivate var actionView: ViewerActionView!
     fileprivate var toolbar: ViewerToolbar!
 
     // actions
@@ -64,7 +61,7 @@ open class AppImageViewer: UIViewController {
     fileprivate var controlVisibilityTimer: Timer!
     
     // delegate
-    open weak var delegate: SKPhotoBrowserDelegate?
+    open weak var delegate: ImageViewerDelegate?
 
     // statusbar initial state
     private var statusbarHidden: Bool = UIApplication.shared.isStatusBarHidden
@@ -83,13 +80,13 @@ open class AppImageViewer: UIViewController {
         setup()
     }
     
-    public convenience init(photos: [AppImageProtocol]) {
+    public convenience init(photos: [ViewerImageProtocol]) {
         self.init(photos: photos, initialPageIndex: 0)
     }
     
     ////// needed 
     @available(*, deprecated: 5.0.0)
-    public convenience init(originImage: UIImage, photos: [AppImageProtocol], animatedFromView: UIView) {
+    public convenience init(originImage: UIImage, photos: [ViewerImageProtocol], animatedFromView: UIView) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
         animator.senderOriginImage = originImage
@@ -97,7 +94,7 @@ open class AppImageViewer: UIViewController {
     }
     
     /// for collection view
-    public convenience init(photos: [AppImageProtocol], initialPageIndex: Int) {
+    public convenience init(photos: [ViewerImageProtocol], initialPageIndex: Int) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
         self.currentPageIndex = min(initialPageIndex, photos.count - 1)
@@ -131,7 +128,7 @@ open class AppImageViewer: UIViewController {
         reloadData()
         
         var i = 0
-        for photo: AppImageProtocol in photos {
+        for photo: ViewerImageProtocol in photos {
             photo.index = i
             i += 1
         }
@@ -250,7 +247,7 @@ public extension AppImageViewer {
         hideControlsAfterDelay()
     }
     
-    func photoAtIndex(_ index: Int) -> AppImageProtocol {
+    func photoAtIndex(_ index: Int) -> ViewerImageProtocol {
         return photos[index]
     }
     
@@ -325,12 +322,12 @@ public extension AppImageViewer {
         return currentPageIndex
     }
     
-    func addPhotos(photos: [AppImageProtocol]) {
+    func addPhotos(photos: [ViewerImageProtocol]) {
         self.photos.append(contentsOf: photos)
         self.reloadData()
     }
     
-    func insertPhotos(photos: [AppImageProtocol], at index: Int) {
+    func insertPhotos(photos: [ViewerImageProtocol], at index: Int) {
         self.photos.insert(contentsOf: photos, at: index)
         self.reloadData()
     }
@@ -481,7 +478,7 @@ private extension AppImageViewer {
     }
     
     func configureActionView() {
-        actionView = SKActionView(frame: view.frame, browser: self)
+        actionView = ViewerActionView(frame: view.frame, browser: self)
         view.addSubview(actionView)
     }
     

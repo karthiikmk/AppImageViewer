@@ -1,20 +1,18 @@
 //
-//  SKDetectingView.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by suzuki_keishi on 2015/10/01.
-//  Copyright © 2015 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import UIKit
 
-@objc protocol SKDetectingViewDelegate {
+@objc protocol TapDetectingViewDelegate {
     func handleSingleTap(_ view: UIView, touch: UITouch)
     func handleDoubleTap(_ view: UIView, touch: UITouch)
 }
 
 class TapDetectingView: UIView {
-    weak var delegate: SKDetectingViewDelegate?
+    weak var delegate: TapDetectingViewDelegate?
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -30,7 +28,8 @@ class TapDetectingView: UIView {
             handleSingleTap(touch)
         case 2 :
             handleDoubleTap(touch)
-        default: break
+        default:
+            break
         }
     }
     

@@ -1,9 +1,7 @@
 //
-//  SKPagingScrollView.swift
-//  SKPhotoBrowser
+//  AppImageViewer
 //
-//  Created by 鈴木 啓司 on 2016/08/18.
-//  Copyright © 2016年 suzuki_keishi. All rights reserved.
+//  Created by Karthik on 1/27/18.
 //
 
 import Foundation
@@ -127,7 +125,7 @@ class ViewerPagingScrollView: UIScrollView {
         return nil
     }
     
-    func pageDisplayingAtPhoto(_ photo: AppImageProtocol) -> ViewerZoomingScrollView? {
+    func pageDisplayingAtPhoto(_ photo: ViewerImageProtocol) -> ViewerZoomingScrollView? {
         for page in visiblePages where page.photo === photo {
             return page
         }
