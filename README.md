@@ -4,6 +4,10 @@
 [![License](https://img.shields.io/cocoapods/l/AppImageViewer.svg?style=flat)](http://cocoapods.org/pods/AppImageViewer)
 [![Platform](https://img.shields.io/cocoapods/p/AppImageViewer.svg?style=flat)](http://cocoapods.org/pods/AppImageViewer)
 
+
+![Effect](https://github.com/karthikAdaptavant/AppImageViewer//raw/master/AppImageViewer1.gif)
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
