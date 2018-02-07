@@ -44,8 +44,15 @@ class ViewerToolbar: UIView {
         
         let x = brower.shareButtonSide == .left ? self.frame.origin.x + ViewerButtonConfig.padding : self.frame.width - 55
         let btn = UIButton(frame: CGRect(x: x, y: 0, width: 38, height: 38))
-        btn.setImage(AppImage.share.image, for: .normal)
-        btn.setImage(AppImage.share.image, for: .selected)
+        
+        if let shareImage = ViewerButtonConfig.shareImage {
+            btn.setImage(shareImage, for: .normal)
+            btn.setImage(shareImage, for: .selected)
+        } else {
+            btn.setImage(AppImage.share.image, for: .normal)
+            btn.setImage(AppImage.share.image, for: .selected)
+        }
+        
         btn.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         btn.layer.cornerRadius = btn.frame.height/2
         btn.clipsToBounds = true

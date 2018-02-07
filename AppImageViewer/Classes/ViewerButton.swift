@@ -13,6 +13,7 @@ public struct ViewerButtonConfig {
     public static var swapCloseAndMoreButton: Bool = false
     public static var closeButtonImage: UIImage?
     public static var moreButtonImage: UIImage?
+    public static var shareImage: UIImage?
 }
 
 // helpers which often used
