@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
    }
 
     s.resource_bundles = {
-    'Notify' => ['AppImageViewer/Assets/**/*.{xcassets}']
+    'AppImageViewer' => ['AppImageViewer/Assets/**/*.{xcassets}']
     }
 
   s.frameworks = 'UIKit'
