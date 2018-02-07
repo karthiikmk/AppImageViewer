@@ -24,6 +24,33 @@ internal enum AppImage {
     }
     
     var image: UIImage {
-        return UIImage(named: self.assetName, in: bulde, compatibleWith: nil) ?? UIImage()
+        return AppImageViewerUtils.getImageFromBundle(name: self.assetName)
+    }
+}
+
+class AppImageViewerUtils {
+    
+    static func getBundle() -> Bundle? {
+        
+        let podBundle = Bundle(for: AppImageViewer.self)
+        
+        guard let bundleUrl = podBundle.url(forResource: "AppImageViewer", withExtension: "bundle") else {
+            return nil
+        }
+        
+        guard let bundle = Bundle(url: bundleUrl) else {
+            return nil
+        }
+        
+        return bundle
+    }
+    
+    static func getImageFromBundle(name: String = "AppImageViewer") -> UIImage {
+        
+        guard let podBundle = self.getBundle(), let image = UIImage(named: name, in: podBundle, compatibleWith: nil) else {
+            return UIImage()
+        }
+        
+        return image
     }
 }
