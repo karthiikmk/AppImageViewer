@@ -23,5 +23,6 @@ Pod::Spec.new do |s|
     }
 
   s.frameworks = 'UIKit'
+  s.dependency 'SDWebImage', '~>3.8'
 
 end

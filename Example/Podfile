@@ -2,4 +2,5 @@ use_frameworks!
 
 target 'AppImageViewer_Example' do
   pod 'AppImageViewer', :path => '../'
+  pod 'SDWebImage', '~>3.8'
 end

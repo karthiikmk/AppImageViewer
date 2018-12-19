@@ -130,7 +130,30 @@ class ViewerPagingScrollView: UIScrollView {
             return page
         }
         return nil
-    }        
+    }
+    
+    func loadAdjacentPhotosIfNecessary(_ photo: ViewerImageProtocol, currentPageIndex: Int) {
+        guard let browser = browser, let page = pageDisplayingAtPhoto(photo) else {
+            return
+        }
+        let pageIndex = (page.tag - pageIndexTagOffset)
+        if currentPageIndex == pageIndex {
+            // Previous
+            if pageIndex > 0 {
+                let previousPhoto = browser.photos[pageIndex - 1]
+                if previousPhoto.underlyingImage == nil {
+                    previousPhoto.loadUnderlyingImageAndNotify()
+                }
+            }
+            // Next
+            if pageIndex < numberOfPhotos - 1 {
+                let nextPhoto = browser.photos[pageIndex + 1]
+                if nextPhoto.underlyingImage == nil {
+                    nextPhoto.loadUnderlyingImageAndNotify()
+                }
+            }
+        }
+    }
 }
 
 private extension ViewerPagingScrollView {
