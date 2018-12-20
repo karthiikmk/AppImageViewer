@@ -23,6 +23,8 @@ public enum ButtonVisibleSide {
     case right
 }
 
+public let APPIMAGE_LOADING_DID_END_NOTIFICATION = "photoLoadingDidEndNotification"
+
 open class AppImageViewer: UIViewController {
     
     // config options
@@ -90,6 +92,7 @@ open class AppImageViewer: UIViewController {
     public convenience init(originImage: UIImage, photos: [ViewerImageProtocol], animatedFromView: UIView) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
+        self.photos.forEach { $0.checkCache() }
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
     }
@@ -98,18 +101,24 @@ open class AppImageViewer: UIViewController {
     public convenience init(photos: [ViewerImageProtocol], initialPageIndex: Int) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
+        self.photos.forEach { $0.checkCache() }
         self.currentPageIndex = min(initialPageIndex, photos.count - 1)
         animator.senderOriginImage = photos[currentPageIndex].underlyingImage
         animator.senderViewForAnimation = photos[currentPageIndex] as? UIView
     }
-
+    
     deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func setup() {
         modalPresentationCapturesStatusBarAppearance = true
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleSKPhotoLoadingDidEndNotification(_:)),
+                                               name: NSNotification.Name(rawValue: APPIMAGE_LOADING_DID_END_NOTIFICATION),
+                                               object: nil)
     }
     
     // MARK: - override
@@ -213,6 +222,33 @@ open class AppImageViewer: UIViewController {
     
     open func didMoreButtonTap() {
         delegate?.didTapMoreButton?(atIndex: currentPageIndex, self)
+    }
+    
+    // MARK: - Notification
+    @objc
+    open func handleSKPhotoLoadingDidEndNotification(_ notification: Notification) {
+        
+        
+        guard let photo = notification.object as? ViewerImageProtocol else {
+            return
+        }
+        
+        DispatchQueue.main.async(execute: {
+            guard let page = self.pagingScrollView.pageDisplayingAtPhoto(photo), let photo = page.photo else {
+                return
+            }
+            
+            if photo.underlyingImage != nil {
+                page.displayImage(complete: true)
+                self.loadAdjacentPhotosIfNecessary(photo)
+            } else {
+                page.displayImageFailure()
+            }
+        })
+    }
+    
+    open func loadAdjacentPhotosIfNecessary(_ photo: ViewerImageProtocol) {
+        pagingScrollView.loadAdjacentPhotosIfNecessary(photo, currentPageIndex: currentPageIndex)
     }
 }
 

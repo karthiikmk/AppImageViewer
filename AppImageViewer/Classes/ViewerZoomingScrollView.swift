@@ -6,20 +6,49 @@
 
 import UIKit
 
+class SKIndicatorView: UIActivityIndicatorView {
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        center = CGPoint(x: frame.width / 2, y: frame.height / 2)
+        activityIndicatorViewStyle = SKPhotoBrowserOptions.indicatorStyle
+        color = SKPhotoBrowserOptions.indicatorColor
+    }
+}
+
+
 open class ViewerZoomingScrollView: UIScrollView {
+    
+//    var photo: ViewerImageProtocol! {
+//        didSet {
+//            imageView.image = nil
+//            if photo != nil && photo.underlyingImage != nil {
+//                displayImage()
+//            }
+//        }
+//    }
     
     var photo: ViewerImageProtocol! {
         didSet {
             imageView.image = nil
             if photo != nil && photo.underlyingImage != nil {
-                displayImage()
+                displayImage(complete: true)
+                return
+            }
+            if photo != nil {
+                displayImage(complete: false)
             }
         }
     }
     
+    
     fileprivate(set) var imageView: TapDetectingImageView!
     fileprivate weak var browser: AppImageViewer?
     fileprivate var tapView: TapDetectingView!
+    fileprivate var indicatorView: SKIndicatorView!
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -56,6 +85,10 @@ open class ViewerZoomingScrollView: UIScrollView {
         imageView.backgroundColor = .clear
         addSubview(imageView)
         
+        // indicator
+        indicatorView = SKIndicatorView(frame: frame)
+        addSubview(indicatorView)
+        
         // self
         backgroundColor = .clear
         delegate = self
@@ -70,6 +103,7 @@ open class ViewerZoomingScrollView: UIScrollView {
     open override func layoutSubviews() {
         
         tapView.frame = bounds
+        indicatorView.frame = bounds
         
         super.layoutSubviews()
         
@@ -205,7 +239,54 @@ open class ViewerZoomingScrollView: UIScrollView {
         // delay control
         // browser?.hideControlsAfterDelay()
     }
+    
+    // MARK: - image
+    open func displayImage(complete flag: Bool) {
+        // reset scale
+        maximumZoomScale = 1
+        minimumZoomScale = 1
+        zoomScale = 1
+        
+        if !flag {
+            if photo.underlyingImage == nil {
+                indicatorView.startAnimating()
+            }
+            photo.loadUnderlyingImageAndNotify()
+        } else {
+            indicatorView.stopAnimating()
+        }
+        
+        if let image = photo.underlyingImage, photo != nil {
+            // image
+            imageView.image = image
+            imageView.contentMode = photo.contentMode
+            
+            var imageViewFrame: CGRect = .zero
+            imageViewFrame.origin = .zero
+            // long photo
+            if SKPhotoBrowserOptions.longPhotoWidthMatchScreen && image.size.height >= image.size.width {
+                let imageHeight = SKMesurement.screenWidth / image.size.width * image.size.height
+                imageViewFrame.size = CGSize(width: SKMesurement.screenWidth, height: imageHeight)
+            } else {
+                imageViewFrame.size = image.size
+            }
+            imageView.frame = imageViewFrame
+            
+            contentSize = imageViewFrame.size
+            setMaxMinZoomScalesForCurrentBounds()
+        } else {
+            // change contentSize will reset contentOffset, so only set the contentsize zero when the image is nil
+            contentSize = CGSize.zero
+        }
+        setNeedsLayout()
+    }
+    
+    open func displayImageFailure() {
+        indicatorView.stopAnimating()
+    }
 }
+
+
 
 // MARK: - UIScrollViewDelegate
 
