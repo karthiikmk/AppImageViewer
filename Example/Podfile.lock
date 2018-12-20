@@ -1,5 +1,5 @@
 PODS:
-  - AppImageViewer (1.0.3):
+  - AppImageViewer (1.0.4):
     - SDWebImage (~> 3.8)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppImageViewer: 9c49891ec50a63cff038a24f6ab472146a25d441
+  AppImageViewer: 84e15df2f732b3bd053ab3c3d10413a1a797c7a1
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
 PODFILE CHECKSUM: 728ee5d0e45e0e44c0b8bb2407c5fc927ff35e89
