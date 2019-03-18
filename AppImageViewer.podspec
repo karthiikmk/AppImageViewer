@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/karthikAdaptavant/AppImageViewer.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
-
   s.source_files = 'AppImageViewer/Classes/**/*'
   
    s.resource_bundles = {
@@ -23,6 +22,6 @@ Pod::Spec.new do |s|
     }
 
   s.frameworks = 'UIKit'
-  s.dependency 'SDWebImage', '~>3.8'
+  s.dependency 'SDWebImage', '~> 4.0'
 
 end

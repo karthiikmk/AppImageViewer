@@ -161,7 +161,7 @@ private extension ViewAnimator {
             delay: 0,
             usingSpringWithDamping: animationDamping,
             initialSpringVelocity: 0,
-            options: UIViewAnimationOptions(),
+            options: UIView.AnimationOptions(),
             animations: {
                 browser.showButtons()
                 self.backgroundView.alpha = 1.0
@@ -183,7 +183,7 @@ private extension ViewAnimator {
             delay: 0,
             usingSpringWithDamping: animationDamping,
             initialSpringVelocity: 0,
-            options: UIViewAnimationOptions(),
+            options: UIView.AnimationOptions(),
             animations: {
                 self.backgroundView.alpha = 0.0
                 self.resizableImageView?.layer.frame = finalFrame
