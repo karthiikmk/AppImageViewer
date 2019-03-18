@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppImageViewer'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'A great framework to viewer you images gracefully.'
   s.description      = "Image viewing will be great with this. really fun. all you need plug and and play with your waves. yay yay. simple isn't it !!"
 
@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/karthikAdaptavant/AppImageViewer.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
-
   s.source_files = 'AppImageViewer/Classes/**/*'
   
    s.resource_bundles = {
@@ -23,6 +22,6 @@ Pod::Spec.new do |s|
     }
 
   s.frameworks = 'UIKit'
-  s.dependency 'SDWebImage', '~>3.8'
+  s.dependency 'SDWebImage', '~> 4.0'
 
 end

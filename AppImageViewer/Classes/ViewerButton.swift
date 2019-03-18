@@ -40,7 +40,7 @@ class ViewerButton: UIButton {
         imageEdgeInsets = insets
         translatesAutoresizingMaskIntoConstraints = true
         autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin]        
-        setImage(image, for: UIControlState())
+        setImage(image, for: UIControl.State())
     }
   
     func setFrameSize(_ size: CGSize? = nil) {
