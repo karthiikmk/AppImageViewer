@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppImageViewer'
-  s.version          = '1.0.7'
+  s.version          = '1.0.8'
   s.summary          = 'A great framework to viewer you images gracefully.'
   s.description      = "Image viewing will be great with this. really fun. all you need plug and and play with your waves. yay yay. simple isn't it !!"
 
@@ -25,3 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'SDWebImage', '~> 4.0'
 
 end
+
+
+
+#to make build. cd to the framework path (not example), run fastlane
