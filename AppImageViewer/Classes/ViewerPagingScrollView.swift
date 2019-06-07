@@ -79,9 +79,7 @@ class ViewerPagingScrollView: UIScrollView {
     
     func tilePages() {
         
-        guard let browser = browser else {
-            return            
-        }
+        guard let browser = browser else { return }
         
         let firstIndex: Int = getFirstIndex()
         let lastIndex: Int = getLastIndex()
@@ -133,9 +131,8 @@ class ViewerPagingScrollView: UIScrollView {
     }
     
     func loadAdjacentPhotosIfNecessary(_ photo: ViewerImageProtocol, currentPageIndex: Int) {
-        guard let browser = browser, let page = pageDisplayingAtPhoto(photo) else {
-            return
-        }
+        guard let browser = browser, let page = pageDisplayingAtPhoto(photo) else { return }
+        
         let pageIndex = (page.tag - pageIndexTagOffset)
         if currentPageIndex == pageIndex {
             // Previous

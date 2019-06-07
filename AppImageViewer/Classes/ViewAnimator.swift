@@ -28,7 +28,7 @@ class ViewAnimator: NSObject, ViewAnimatorDelegate {
     
     internal var bounceAnimation: Bool = true
     
-    internal var senderOriginImage: UIImage!
+    internal var senderOriginImage: UIImage?
     internal var senderViewOriginalFrame: CGRect = .zero
     internal var senderViewForAnimation: UIView?
     
@@ -51,20 +51,20 @@ class ViewAnimator: NSObject, ViewAnimatorDelegate {
     
     func willPresent(_ browser: AppImageViewer) {
         
-        guard let sender = browser.delegate?.viewForPhoto?(browser, index: browser.currentPageIndex) ?? senderViewForAnimation else {
+        guard let sender = browser.delegate?.viewForPhoto(browser, index: browser.currentPageIndex) ?? senderViewForAnimation else {
             presentAnimation(browser)
             return
         }
 
         let photo = browser.photoAtIndex(browser.currentPageIndex)
-        let imageFromView = (senderOriginImage ?? browser.getImageFromView(sender)).rotateImageByOrientation()
+        let imageFromView = (browser.getImageFromView(sender)).rotateImageByOrientation()
         let imageRatio = imageFromView.size.width / imageFromView.size.height
-        
+
         senderOriginImage = nil
         senderViewOriginalFrame = calcOriginFrame(sender)
         finalImageViewFrame = calcFinalFrame(imageRatio)
         resizableImageView = UIImageView(image: imageFromView)
-        
+
         if let resizableImageView = resizableImageView {
             resizableImageView.frame = senderViewOriginalFrame
             resizableImageView.clipsToBounds = true
@@ -82,7 +82,7 @@ class ViewAnimator: NSObject, ViewAnimatorDelegate {
     
     func willDismiss(_ browser: AppImageViewer) {
         
-        guard let sender = browser.delegate?.viewForPhoto?(browser, index: browser.currentPageIndex),
+        guard let sender = browser.delegate?.viewForPhoto(browser, index: browser.currentPageIndex),
             let image = browser.photoAtIndex(browser.currentPageIndex).underlyingImage,
             let scrollView = browser.pageDisplayedAtIndex(browser.currentPageIndex) else {
                 
@@ -193,7 +193,7 @@ private extension ViewAnimator {
                     self.resizableImageView?.removeFromSuperview()
                     self.backgroundView.removeFromSuperview()
                 }
-            })
+        })
     }
 }
 

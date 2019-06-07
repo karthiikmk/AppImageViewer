@@ -22,15 +22,6 @@ class SKIndicatorView: UIActivityIndicatorView {
 
 open class ViewerZoomingScrollView: UIScrollView {
     
-//    var photo: ViewerImageProtocol! {
-//        didSet {
-//            imageView.image = nil
-//            if photo != nil && photo.underlyingImage != nil {
-//                displayImage()
-//            }
-//        }
-//    }
-    
     var photo: ViewerImageProtocol! {
         didSet {
             imageView.image = nil
@@ -241,19 +232,18 @@ open class ViewerZoomingScrollView: UIScrollView {
     }
     
     // MARK: - image
-    open func displayImage(complete flag: Bool) {
+    open func displayImage(complete: Bool) {
         // reset scale
         maximumZoomScale = 1
         minimumZoomScale = 1
         zoomScale = 1
-        
-        if !flag {
-            if photo.underlyingImage == nil {
-                indicatorView.startAnimating()
-            }
-            photo.loadUnderlyingImageAndNotify()
-        } else {
+
+        switch complete {
+        case true:
             indicatorView.stopAnimating()
+        case false:
+            if photo.underlyingImage == nil { indicatorView.startAnimating() }
+            photo.loadUnderlyingImageAndNotify()
         }
         
         if let image = photo.underlyingImage, photo != nil {
@@ -286,10 +276,7 @@ open class ViewerZoomingScrollView: UIScrollView {
     }
 }
 
-
-
 // MARK: - UIScrollViewDelegate
-
 extension ViewerZoomingScrollView: UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
@@ -309,20 +296,12 @@ extension ViewerZoomingScrollView: UIScrollViewDelegate {
 extension ViewerZoomingScrollView: TapDetectingViewDelegate {
     
     func handleSingleTap(_ view: UIView, touch: UITouch) {
-        
-        guard let browser = browser, browser.enableZoomBlackArea == true else {
-            return
-        }
-        
+        guard let browser = browser, browser.enableZoomBlackArea == true else { return }
         browser.toggleControls()
     }
     
     func handleDoubleTap(_ view: UIView, touch: UITouch) {
-        
-        guard let browser = browser, browser.enableZoomBlackArea == true else {
-            return
-        }
-        
+        guard let browser = browser, browser.enableZoomBlackArea == true else { return }
         let needPoint = getViewFramePercent(view, touch: touch)
         handleDoubleTap(needPoint)
     }
@@ -332,10 +311,7 @@ extension ViewerZoomingScrollView: TapDetectingViewDelegate {
 extension ViewerZoomingScrollView: TapDetectingImageViewDelegate {
     
     func handleImageViewSingleTap(_ touchPoint: CGPoint) {
-        guard let browser = browser else {
-            return
-        }
-        
+        guard let browser = browser else { return }
         browser.toggleControls()
     }
     

@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import UIKit.UIImage
-
 
 public protocol SKCacheable {}
 

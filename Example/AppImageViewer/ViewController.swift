@@ -53,8 +53,10 @@ class ViewController: UIViewController, AppImageViewerDelegate {
             
         case 1, 2, 3:
             
-            let appImage = ViewerImage.appImage(forUrl: "{replace your image url here}")
-            let viewer = AppImageViewer(originImage: tappedImage.image!, photos: [appImage], animatedFromView: tappedImage)
+            let appImage = ViewerImage.appImage(forUrl: "https://avatars3.githubusercontent.com/u/39947022?s=460&v=4")
+            appImage.shouldCachePhotoURLImage = true
+            let appImage1 = ViewerImage.appImage(forUrl: "https://avatars3.githubusercontent.com/u/11072850?s=460&v=4")
+            let viewer = AppImageViewer(originImage: nil, photos: [appImage, appImage1], animatedFromView: tappedImage)            
             viewer.delegate = self
             present(viewer, animated: true, completion: nil)
             

@@ -6,16 +6,27 @@
 
 import UIKit
 
-@objc public protocol AppImageViewerDelegate {
+public protocol AppImageViewerDelegate: class {
     
-    @objc optional func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer)
-    @objc optional func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer)
-    @objc optional func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int)
-    @objc optional func willDismissAtPageIndex(_ index: Int)
-    @objc optional func didDismissAtPageIndex(_ index: Int)
-    @objc optional func didScrollToIndex(_ browser: AppImageViewer, index: Int)
-    @objc optional func viewForPhoto(_ browser: AppImageViewer, index: Int) -> UIView?
-    @objc optional func controlsVisibilityToggled(_ browser: AppImageViewer, hidden: Bool)
+    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer)
+    func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer)
+    func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int)
+    func willDismissAtPageIndex(_ index: Int)
+    func didDismissAtPageIndex(_ index: Int)
+    func didScrollToIndex(_ browser: AppImageViewer, index: Int)
+    func viewForPhoto(_ browser: AppImageViewer, index: Int) -> UIView?
+    func controlsVisibilityToggled(_ browser: AppImageViewer, hidden: Bool)
+}
+
+public extension AppImageViewerDelegate {
+    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer) { }
+    func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer) { }
+    func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int) { }
+    func willDismissAtPageIndex(_ index: Int) { }
+    func didDismissAtPageIndex(_ index: Int) { }
+    func didScrollToIndex(_ browser: AppImageViewer, index: Int) { }
+    func viewForPhoto(_ browser: AppImageViewer, index: Int) -> UIView? { return nil }
+    func controlsVisibilityToggled(_ browser: AppImageViewer, hidden: Bool) { }
 }
 
 public enum ButtonVisibleSide {
@@ -43,7 +54,6 @@ open class AppImageViewer: UIViewController {
     
     // animation
     fileprivate let animator: ViewAnimator = .init()
-    
     fileprivate var actionView: ViewerActionView!
     fileprivate var toolbar: ViewerToolbar!
 
@@ -87,9 +97,7 @@ open class AppImageViewer: UIViewController {
         self.init(photos: photos, initialPageIndex: 0)
     }
     
-    ////// needed 
-    @available(*, deprecated: 5.0.0)
-    public convenience init(originImage: UIImage, photos: [ViewerImageProtocol], animatedFromView: UIView) {
+    public convenience init(originImage: UIImage?, photos: [ViewerImageProtocol], animatedFromView: UIView) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
         self.photos.forEach { $0.checkCache() }
@@ -97,7 +105,6 @@ open class AppImageViewer: UIViewController {
         animator.senderViewForAnimation = animatedFromView
     }
     
-    /// for collection view
     public convenience init(photos: [ViewerImageProtocol], initialPageIndex: Int) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
@@ -144,7 +151,7 @@ open class AppImageViewer: UIViewController {
         super.viewWillLayoutSubviews()
         isPerformingLayout = true
         // where did start
-        delegate?.didShowPhotoAtIndex?(self, index: currentPageIndex)
+        delegate?.didShowPhotoAtIndex(self, index: currentPageIndex)
 
         // toolbar
         toolbar.frame = frameForToolbarAtOrientation()
@@ -184,8 +191,7 @@ open class AppImageViewer: UIViewController {
         view.setNeedsLayout()
     }
     
-    open func performLayout() {
-        
+    open func performLayout() {        
         isPerformingLayout = true
 
         // reset local cache
@@ -193,7 +199,7 @@ open class AppImageViewer: UIViewController {
         pagingScrollView.updateContentOffset(currentPageIndex)
         pagingScrollView.tilePages()
         
-        delegate?.didShowPhotoAtIndex?(self, index: currentPageIndex)
+        delegate?.didShowPhotoAtIndex(self, index: currentPageIndex)
         
         isPerformingLayout = false
     }
@@ -211,33 +217,26 @@ open class AppImageViewer: UIViewController {
         }
         dismiss(animated: !animated) {
             completion?()
-            self.delegate?.didDismissAtPageIndex?(self.currentPageIndex)
+            self.delegate?.didDismissAtPageIndex(self.currentPageIndex)
         }
     }
     
     open func determineAndClose() {
-        delegate?.willDismissAtPageIndex?(self.currentPageIndex)
+        delegate?.willDismissAtPageIndex(self.currentPageIndex)
         animator.willDismiss(self)
     }
     
     open func didMoreButtonTap() {
-        delegate?.didTapMoreButton?(atIndex: currentPageIndex, self)
+        delegate?.didTapMoreButton(atIndex: currentPageIndex, self)
     }
     
     // MARK: - Notification
     @objc
     open func handleSKPhotoLoadingDidEndNotification(_ notification: Notification) {
-        
-        
-        guard let photo = notification.object as? ViewerImageProtocol else {
-            return
-        }
+        guard let photo = notification.object as? ViewerImageProtocol else { return }
         
         DispatchQueue.main.async(execute: {
-            guard let page = self.pagingScrollView.pageDisplayingAtPhoto(photo), let photo = page.photo else {
-                return
-            }
-            
+            guard let page = self.pagingScrollView.pageDisplayingAtPhoto(photo), let photo = page.photo else { return }
             if photo.underlyingImage != nil {
                 page.displayImage(complete: true)
                 self.loadAdjacentPhotosIfNecessary(photo)
@@ -325,13 +324,13 @@ public extension AppImageViewer {
     
     @objc func hideControls(_ timer: Timer) {
         hideControls()
-        delegate?.controlsVisibilityToggled?(self, hidden: true)
+        delegate?.controlsVisibilityToggled(self, hidden: true)
     }
     
     func toggleControls() {
         let hidden = !areControlsHidden()
         setControlsHidden(hidden, animated: true, permanent: false)
-        delegate?.controlsVisibilityToggled?(self, hidden: areControlsHidden())
+        delegate?.controlsVisibilityToggled(self, hidden: areControlsHidden())
     }
     
     func areControlsHidden() -> Bool {
@@ -494,7 +493,7 @@ internal extension AppImageViewer {
         
         switch self.isCustomShare {
         case true:
-            self.delegate?.didTapShareButton?(atIndex: currentPageIndex, self)
+            self.delegate?.didTapShareButton(atIndex: currentPageIndex, self)
         default:
             popupShare()
         }
@@ -567,7 +566,7 @@ extension AppImageViewer: UIScrollViewDelegate {
         currentPageIndex = min(max(Int(floor(visibleBounds.midX / visibleBounds.width)), 0), photos.count - 1)
         
         if currentPageIndex != previousCurrentPage {
-            delegate?.didShowPhotoAtIndex?(self, index: currentPageIndex)
+            delegate?.didShowPhotoAtIndex(self, index: currentPageIndex)
         }
     }
     
@@ -575,7 +574,7 @@ extension AppImageViewer: UIScrollViewDelegate {
         hideControlsAfterDelay()
         
         let currentIndex = pagingScrollView.contentOffset.x / pagingScrollView.frame.size.width
-        delegate?.didScrollToIndex?(self, index: Int(currentIndex))
+        delegate?.didScrollToIndex(self, index: Int(currentIndex))
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
