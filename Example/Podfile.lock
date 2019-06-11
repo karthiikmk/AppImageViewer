@@ -1,26 +1,16 @@
 PODS:
-  - AppImageViewer (1.0.4):
-    - SDWebImage (~> 4.0)
-  - SDWebImage (4.4.6):
-    - SDWebImage/Core (= 4.4.6)
-  - SDWebImage/Core (4.4.6)
+  - AppImageViewer (1.0.10)
 
 DEPENDENCIES:
   - AppImageViewer (from `../`)
-  - SDWebImage (~> 4.0)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - SDWebImage
 
 EXTERNAL SOURCES:
   AppImageViewer:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppImageViewer: 6ca77f44bdeb2bb39fe2921fc9c3508d16a998e0
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  AppImageViewer: 5fb2163e116f2a4c97daa715351388e78a2c8445
 
-PODFILE CHECKSUM: c5879bc0143f3ab4731f79e3d3f124f9a312be2b
+PODFILE CHECKSUM: c3e8f56e2f897db67a5a339be578aa3438ddbb07
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
