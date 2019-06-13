@@ -13,7 +13,7 @@ import Foundation
     var index: Int { get set }
     var underlyingImage: UIImage! { get }
     var canShowLoader: Bool { get }
-    var canFetchFromServer: Bool { get }
+    var fetchFromServer: Bool { get }
     var shouldCachePhotoURLImage: Bool { get }
     var contentMode: UIView.ContentMode { get set }
     
@@ -27,8 +27,8 @@ open class ViewerImage: NSObject, ViewerImageProtocol {
     open var index: Int = 0
     open var photoURL: String?
     open var underlyingImage: UIImage? = nil
-    open var canShowLoader: Bool = true
-    open var canFetchFromServer: Bool = true
+    open var canShowLoader: Bool = false
+    open var fetchFromServer: Bool = false
     open var contentMode: UIView.ContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = true
     

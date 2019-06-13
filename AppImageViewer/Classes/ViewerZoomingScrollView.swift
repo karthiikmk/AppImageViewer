@@ -25,7 +25,7 @@ open class ViewerZoomingScrollView: UIScrollView {
     var photo: ViewerImageProtocol! {
         didSet {
             imageView.image = nil
-            displayImage(complete: !photo.canFetchFromServer)
+            displayImage(complete: !photo.fetchFromServer)
         }
     }
     
