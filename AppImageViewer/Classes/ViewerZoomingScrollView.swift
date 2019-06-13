@@ -25,13 +25,7 @@ open class ViewerZoomingScrollView: UIScrollView {
     var photo: ViewerImageProtocol! {
         didSet {
             imageView.image = nil
-            if photo != nil && photo.underlyingImage != nil {
-                displayImage(complete: true)
-                return
-            }
-            if photo != nil {
-                displayImage(complete: false)
-            }
+            displayImage(complete: !photo.canShowLoader)
         }
     }
     
