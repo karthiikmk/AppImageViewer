@@ -12,7 +12,10 @@ import Foundation
     
     var index: Int { get set }
     var underlyingImage: UIImage! { get }
+    var canShowLoader: Bool { get }
+    var shouldCachePhotoURLImage: Bool { get }
     var contentMode: UIView.ContentMode { get set }
+    
     func loadUnderlyingImageAndNotify()
     func checkCache()
 }
@@ -23,6 +26,7 @@ open class ViewerImage: NSObject, ViewerImageProtocol {
     open var index: Int = 0
     open var photoURL: String?
     open var underlyingImage: UIImage? = nil
+    open var canShowLoader: Bool = true
     open var contentMode: UIView.ContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = true
     
@@ -48,10 +52,10 @@ open class ViewerImage: NSObject, ViewerImageProtocol {
 
     // Url or URL request can be cached.
     open func checkCache() {
-        guard let photoURL = photoURL, shouldCachePhotoURLImage else { return }
+        guard let photoURL = photoURL, let url = URL(string: photoURL), shouldCachePhotoURLImage else { return }
 
         if SKCache.sharedCache.imageCache is SKRequestResponseCacheable {
-            let request = URLRequest(url: URL(string: photoURL)!)
+            let request = URLRequest(url: url)
             if let img = SKCache.sharedCache.imageForRequest(request) {
                 underlyingImage = img
             }
@@ -112,8 +116,8 @@ extension ViewerImage {
         return ViewerImage(url: url)
     }
 
-    public static func appImage(forUrl url: String, holder: UIImage?) -> ViewerImage {
-        return ViewerImage(url: url, holder: holder)
+    public static func appImage(forUrl url: String, thumpnail: UIImage?) -> ViewerImage {
+        return ViewerImage(url: url, holder: thumpnail)
     }
 }
 

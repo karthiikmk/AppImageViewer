@@ -242,7 +242,8 @@ open class ViewerZoomingScrollView: UIScrollView {
         case true:
             indicatorView.stopAnimating()
         case false:
-            if photo.underlyingImage == nil { indicatorView.startAnimating() }
+            if photo.canShowLoader { indicatorView.startAnimating()
+            } else if photo.underlyingImage == nil { indicatorView.startAnimating() }
             photo.loadUnderlyingImageAndNotify()
         }
         
