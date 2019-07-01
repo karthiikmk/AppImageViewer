@@ -3,6 +3,4 @@ platform :ios, '10.0'
 
 target 'AppImageViewer_Example' do
   pod 'AppImageViewer', :path => '../'
-  #bpod 'SDWebImage', '~> 4.0'
-  
 end

@@ -23,10 +23,8 @@ Pod::Spec.new do |s|
     }
 
   s.frameworks = 'UIKit'
-  #s.dependency 'SDWebImage', '~> 4.0'
 
 end
 
-
-
-#to make build. cd to the framework path (not example), run fastlane
+#To make build. cd to the framework path (not example), run fastlane
+#To Make Build, use fulliosdevelopers bitrise account.
