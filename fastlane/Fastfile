@@ -40,9 +40,9 @@ platform :ios do
                                    bump_type: type)
     git_add(path: "AppImageViewer.podspec")
     git_commit(path: ["AppImageViewer.podspec"],
-               message: "#{version} release")
+               message: "#{version} Release")
     add_git_tag(tag: "#{version}")    
-    push_to_git_remote    
+    push_to_git_remote(remote: "origin", remote_branch: "deploy", tags: true)        
     pod_push(allow_warnings: true)
   end
 end
