@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppImageViewer'
-  s.version          = '1.0.24'
+  s.version          = '1.0.30'
   s.swift_version    = '4.2'
   s.summary          = 'A great framework to viewer you images gracefully.'
   s.description      = "Image viewing will be great with this. really fun. all you need plug and and play with your waves. yay yay. simple isn't it !!"
@@ -28,3 +28,4 @@ end
 
 #To make build. cd to the framework path (not example), run fastlane
 #To Make Build, use fulliosdevelopers bitrise account.
+#if any push happend in deploy branch, bitrise trigger will be executed
