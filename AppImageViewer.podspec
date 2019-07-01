@@ -29,3 +29,4 @@ end
 #To make build. cd to the framework path (not example), run fastlane
 #To Make Build, use fulliosdevelopers bitrise account.
 #if any push happend in deploy branch, bitrise trigger will be executed
+

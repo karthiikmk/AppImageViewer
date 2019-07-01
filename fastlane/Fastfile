@@ -42,10 +42,7 @@ platform :ios do
     git_commit(path: ["AppImageViewer.podspec"],
                message: "#{version} release")
     add_git_tag(tag: "#{version}")    
-    push_to_git_remote(
-      remote: "origin",
-      remote_branch: "deploy",
-      tags: false)      
+    push_to_git_remote    
     pod_push(allow_warnings: true)
   end
 end
