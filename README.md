@@ -27,7 +27,7 @@ it, simply add the following line to your Podfile:
 ### Swift Package Manager
 AppImageViewer is available through Swift Package Manager. To install it, simply add the following dependency to your Package.swift
 ```` swift
-	.package(url: "https://github.com/karthikAdaptavant/AppImageViewer.git", from: "1.0.27")
+	.package(url: "https://github.com/karthikAdaptavant/AppImageViewer.git", from: "1.6.2")
 ````
 
 ## Usage
