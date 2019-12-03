@@ -229,18 +229,16 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AppImageViewer_Example/Pods-AppImageViewer_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AppImageViewer_Example/Pods-AppImageViewer_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AppImageViewer/AppImageViewer.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppImageViewer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppImageViewer_Example/Pods-AppImageViewer_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppImageViewer_Example/Pods-AppImageViewer_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E40DCC5377E86069710A29CD /* [CP] Check Pods Manifest.lock */ = {

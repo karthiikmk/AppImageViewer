@@ -1,5 +1,5 @@
 PODS:
-  - AppImageViewer (1.0.12)
+  - AppImageViewer (1.0.26)
 
 DEPENDENCIES:
   - AppImageViewer (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppImageViewer: b960f197ffdc0e6098a474e73f3f38d14c83e9de
+  AppImageViewer: 2d49e749be5513ab9c224fa568b6b951e587b653
 
-PODFILE CHECKSUM: 95c43470624827f7db19b8172bcc10ee19b4ed68
+PODFILE CHECKSUM: bc121674611204fa6f414482a4854d8a2fb6d7a3
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.8.4
