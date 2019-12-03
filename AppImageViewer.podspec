@@ -14,13 +14,13 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.source_files = 'AppImageViewer/Classes/**/*'
   
-   s.resource_bundles = {
-     'AppImageViewer' => ['AppImageViewer/Assets/*.png']
-   }
+  s.resource_bundles = {
+     'AppImageViewer' => ['Sources/AppImageViewer/Assets/*.png']
+  }
 
-    s.resource_bundles = {
-    'AppImageViewer' => ['AppImageViewer/Assets/**/*.{xcassets}']
-    }
+  s.resource_bundles = {
+  	'AppImageViewer' => ['Sources/AppImageViewer/Assets/**/*.{xcassets}']
+  }
 
   s.frameworks = 'UIKit'
 
