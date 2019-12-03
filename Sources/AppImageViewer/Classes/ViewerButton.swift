@@ -4,6 +4,8 @@
 //  Created by Karthik on 1/27/18.
 //
 
+import UIKit
+import UIKit.UIImage
 import Foundation
 
 public struct ViewerButtonConfig {
