@@ -5,9 +5,6 @@
 [![Platform](https://img.shields.io/cocoapods/p/AppImageViewer.svg?style=flat)](http://cocoapods.org/pods/AppImageViewer)
 
 
-![Effect](https://github.com/karthikAdaptavant/AppImageViewer//raw/master/AppImageViewer1.gif)
-
-
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -21,21 +18,21 @@ it, simply add the following line to your Podfile:
 
 ## CocoaPods
 ```ruby
-	pod 'AppImageViewer'
+ pod 'AppImageViewer'
 ```
 
 ### Swift Package Manager
 AppImageViewer is available through Swift Package Manager. To install it, simply add the following dependency to your Package.swift
 ```` swift
-	.package(url: "https://github.com/karthikAdaptavant/AppImageViewer.git", from: "1.6.2")
+  .package(url: "https://github.com/karthikAdaptavant/AppImageViewer.git", from: "1.6.2")
 ````
 
 ## Usage
 ```swift
-    let appImage = ViewerImage.appImage(forImage: tappedImage.image!)
-    let viewer = AppImageViewer(originImage: tappedImage.image!, photos: [appImage], animatedFromView: tappedImage)
-    viewer.delegate = self
-    present(viewer, animated: true, completion: nil)
+ let appImage = ViewerImage.appImage(forImage: tappedImage.image!)
+ let viewer = AppImageViewer(originImage: tappedImage.image!, photos: [appImage], animatedFromView: tappedImage)
+ viewer.delegate = self
+ present(viewer, animated: true, completion: nil)
 ```
 
 ## Author
