@@ -5,7 +5,7 @@
 //  Created by Karthik on 12/13/18.
 //
 
-import Foundation
+import UIKit
 import UIKit.UIImage
 
 public protocol SKCacheable {}

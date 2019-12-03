@@ -19,9 +19,16 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 AppImageViewer is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+## CocoaPods
 ```ruby
-pod 'AppImageViewer'
+	pod 'AppImageViewer'
 ```
+
+### Swift Package Manager
+AppImageViewer is available through Swift Package Manager. To install it, simply add the following dependency to your Package.swift
+```` swift
+	.package(url: "https://github.com/karthikAdaptavant/AppImageViewer.git", from: "1.0.27")
+````
 
 ## Usage
 ```swift

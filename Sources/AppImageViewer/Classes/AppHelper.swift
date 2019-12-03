@@ -5,7 +5,7 @@
 //  Created by Karthik on 1/28/18.
 //
 
-import Foundation
+import UIKit
 
 private var bulde = Bundle(for: AppImageViewer.self)
 

@@ -4,7 +4,7 @@
 //  Created by Karthik on 1/27/18.
 //
 
-import Foundation
+import UIKit
 
 class ViewerPagingScrollView: UIScrollView {
     

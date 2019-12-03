@@ -12,15 +12,15 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/karthikAdaptavant/AppImageViewer.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
-  s.source_files = 'AppImageViewer/Classes/**/*'
+  s.source_files = 'Sources/AppImageViewer/Classes/**/*'
   
-   s.resource_bundles = {
-     'AppImageViewer' => ['AppImageViewer/Assets/*.png']
-   }
+  s.resource_bundles = {
+     'AppImageViewer' => ['Sources/AppImageViewer/Assets/*.png']
+  }
 
-    s.resource_bundles = {
-    'AppImageViewer' => ['AppImageViewer/Assets/**/*.{xcassets}']
-    }
+  s.resource_bundles = {
+  	'AppImageViewer' => ['Sources/AppImageViewer/Assets/**/*.{xcassets}']
+  }
 
   s.frameworks = 'UIKit'
 
