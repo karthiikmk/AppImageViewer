@@ -108,3 +108,9 @@ extension UIImage {
         return transform
     }
 }
+
+extension Array {
+    func getElement(at index: Index) -> Element? {
+        return 0 <= index && index < count ? self[index] : nil
+    }
+}
