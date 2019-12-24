@@ -55,7 +55,9 @@ class ViewController: UIViewController, AppImageViewerDelegate {
             
             let appImage = ViewerImage.appImage(forUrl: "https://avatars3.githubusercontent.com/u/39947022?s=460&v=4")
             appImage.shouldCachePhotoURLImage = true
+            appImage.fetchFromServer = true
             let appImage1 = ViewerImage.appImage(forUrl: "https://avatars3.githubusercontent.com/u/11072850?s=460&v=4")
+            appImage1.fetchFromServer = true
             let viewer = AppImageViewer(originImage: nil, photos: [appImage, appImage1], animatedFromView: tappedImage)            
             viewer.delegate = self
             present(viewer, animated: true, completion: nil)
@@ -65,7 +67,7 @@ class ViewController: UIViewController, AppImageViewerDelegate {
         }
     }
     
-    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer) {
+    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer, _ image: UIImage?) {
         print("share button tapped")
     }
     
