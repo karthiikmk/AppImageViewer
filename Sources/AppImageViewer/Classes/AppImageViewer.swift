@@ -8,7 +8,7 @@ import UIKit
 
 public protocol AppImageViewerDelegate: class {
     
-    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer)
+    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer, _ image: UIImage?)
     func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer)
     func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int)
     func willDismissAtPageIndex(_ index: Int)
@@ -19,7 +19,7 @@ public protocol AppImageViewerDelegate: class {
 }
 
 public extension AppImageViewerDelegate {
-    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer) { }
+    func didTapShareButton(atIndex index: Int, _ browser: AppImageViewer, _ image: UIImage? = nil) { }
     func didTapMoreButton(atIndex index: Int, _ browser: AppImageViewer) { }
     func didShowPhotoAtIndex(_ browser: AppImageViewer, index: Int) { }
     func willDismissAtPageIndex(_ index: Int) { }
@@ -487,13 +487,12 @@ internal extension AppImageViewer {
    
     @objc func actionButtonPressed(_ sender: Any) {
         
-        guard photos.count > 0 else {
-            return
-        }
-        
+        guard photos.count > 0 else { return }
+        let imageViewer = self.photos.getElement(at: currentPageIndex)
+
         switch self.isCustomShare {
         case true:
-            self.delegate?.didTapShareButton(atIndex: currentPageIndex, self)
+            self.delegate?.didTapShareButton(atIndex: currentPageIndex, self, imageViewer?.underlyingImage)
         default:
             popupShare()
         }
