@@ -97,12 +97,13 @@ open class AppImageViewer: UIViewController {
         self.init(photos: photos, initialPageIndex: 0)
     }
     
-    public convenience init(originImage: UIImage?, photos: [ViewerImageProtocol], animatedFromView: UIView) {
+    public convenience init(originImage: UIImage?, photos: [ViewerImageProtocol], animatedFromView: UIView, animateFromViewFrame: Bool = false) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
         self.photos.forEach { $0.checkCache() }
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
+        animator.animateFromViewFrame = animateFromViewFrame
     }
     
     public convenience init(photos: [ViewerImageProtocol], initialPageIndex: Int) {

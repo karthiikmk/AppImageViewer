@@ -31,6 +31,7 @@ class ViewAnimator: NSObject, ViewAnimatorDelegate {
     internal var senderOriginImage: UIImage?
     internal var senderViewOriginalFrame: CGRect = .zero
     internal var senderViewForAnimation: UIView?
+    internal var animateFromViewFrame: Bool = false
     
     fileprivate var animationDuration: TimeInterval {
         return bounceAnimation ? 0.5 : 0.35
@@ -130,6 +131,8 @@ private extension ViewAnimator {
             return senderViewOriginalFrameTemp
         } else if let senderViewOriginalFrameTemp = sender.layer.superlayer?.convert(sender.frame, to: nil) {
             return senderViewOriginalFrameTemp
+        } else if animateFromViewFrame, let senderView = senderViewForAnimation {
+            return senderView.frame
         } else {
             return .zero
         }
