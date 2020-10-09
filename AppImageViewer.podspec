@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
   s.name             = 'AppImageViewer'
   s.version          = '1.6.5'
-  s.swift_version    = '4.2'
+  s.swift_version    = '5.0'
   s.summary          = 'A great framework to viewer you images gracefully.'
   s.description      = "Image viewing will be great with this. really fun. all you need plug and and play with your waves. yay yay. simple isn't it !!"
 
@@ -23,7 +23,6 @@ Pod::Spec.new do |s|
   }
 
   s.frameworks = 'UIKit'
-
 end
 
 #To make build. cd to the framework path (not example), run fastlane
