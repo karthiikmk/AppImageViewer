@@ -5,47 +5,19 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.012424">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000355">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.003714">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000219">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: pod_lib_lint" time="13.709707">
+      <testcase classname="fastlane.lanes" name="2: pod_lib_lint" time="0.27538">
         
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="3: version_bump_podspec" time="0.006667">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="4: git_add" time="0.023871">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="5: git_commit" time="0.037647">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="6: add_git_tag" time="0.025981">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="7: push_to_git_remote" time="4.371021">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="8: pod_push" time="123.093176">
+          <failure message="/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:38:in `release'&#10;Fastfile:24:in `block (2 levels) in parsing_binding'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/commands_generator.rb:352:in `run'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/gems/fastlane-2.156.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/bin/fastlane:23:in `load'&#10;/usr/local/Cellar/fastlane/2.156.0/libexec/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Exit status of command 'bundle exec pod lib lint --allow-warnings' was 1 instead of 0.&#10;--- ERROR REPORT TEMPLATE -------------------------------------------------------&#10;# Error Report&#10;&#10;## Questions&#10;&#10;Please fill out answers to these questions, it'll help us figure out&#10;why things are going wrong.&#10;&#10;- **What did you do?**&#10;&#10;  I ran the command `/usr/local/opt/ruby/bin/bundle exec pod lib lint --allow-warnings`&#10;&#10;- **What did you expect to happen?**&#10;&#10;  I expected Bundler to...&#10;&#10;- **What happened instead?**&#10;&#10;  Instead, what happened was...&#10;&#10;- **Have you tried any solutions posted on similar issues in our issue tracker, stack overflow, or google?**&#10;&#10;  I tried...&#10;&#10;- **Have you read our issues document, https://github.com/bundler/bundler/blob/master/doc/contributing/ISSUES.md?**&#10;&#10;  ...&#10;&#10;## Backtrace&#10;&#10;```&#10;Gem::GemNotFoundException: can't find gem bundler (= 2.1.4) with executable bundle&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/rubygems.rb:277:in `find_spec_for_exe'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/rubygems.rb:254:in `bin_path'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/rubygems_integration.rb:223:in `bin_path'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/shared_helpers.rb:297:in `set_bundle_variables'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/shared_helpers.rb:76:in `set_bundle_environment'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/cli/exec.rb:25:in `run'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/cli.rb:476:in `exec'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/vendor/thor/lib/thor/command.rb:27:in `run'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/vendor/thor/lib/thor.rb:399:in `dispatch'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/cli.rb:30:in `dispatch'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/vendor/thor/lib/thor/base.rb:476:in `start'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/cli.rb:24:in `start'&#10;  /usr/local/Cellar/ruby/2.7.1_2/lib/ruby/gems/2.7.0/gems/bundler-2.1.2/exe/bundle:46:in `block in &lt;top (required)&gt;'&#10;  /usr/local/lib/ruby/site_ruby/2.7.0/bundler/friendly_errors.rb:123:in `with_friendly_errors'&#10;  /usr/local/Cellar/ruby/2.7.1_2/lib/ruby/gems/2.7.0/gems/bundler-2.1.2/exe/bundle:34:in `&lt;top (required)&gt;'&#10;  /usr/local/opt/ruby/bin/bundle:23:in `load'&#10;  /usr/local/opt/ruby/bin/bundle:23:in `&lt;main&gt;'&#10;```&#10;&#10;## Environment&#10;&#10;```&#10;Bundler       2.1.4&#10;  Platforms   ruby, x86_64-darwin-19&#10;Ruby          2.7.1p83 (2020-03-31 revision a0c7c23c9cec0d0ffcba012279cd652d28ad5bf3) [x86_64-darwin19]&#10;  Full Path   /usr/local/Cellar/ruby/2.7.1_2/bin/ruby&#10;  Config Dir  /usr/local/Cellar/ruby/2.7.1_2/etc&#10;RubyGems      3.1.4&#10;  Gem Home    /usr/local/Cellar/fastlane/2.156.0/libexec&#10;  Gem Path    /usr/local/Cellar/fastlane/2.156.0/libexec&#10;  User Home   /Users/karthik&#10;  User Path   /Users/karthik/.gem/ruby/2.7.0&#10;  Bin Dir     /usr/local/Cellar/fastlane/2.156.0/libexec/bin&#10;Tools         &#10;  Git         2.24.3 (Apple Git-128)&#10;  RVM         not installed&#10;  rbenv       not installed&#10;  chruby      not installed&#10;```&#10;&#10;## Bundler Build Metadata&#10;&#10;```&#10;Built At          2020-06-03&#10;Git SHA           32a4159325&#10;Released Version  false&#10;```&#10;&#10;## Bundler settings&#10;&#10;```&#10;build.nokogiri&#10;  Set for the current user (/Users/karthik/.bundle/config): &quot;--use-system-libraries&quot;&#10;```&#10;&#10;## Gemfile&#10;&#10;### Gemfile&#10;&#10;```ruby&#10;source &quot;https://rubygems.org&quot;&#10;&#10;gem &quot;fastlane&quot;&#10;gem &quot;cocoapods&quot;&#10;```&#10;&#10;### Gemfile.lock&#10;&#10;```&#10;&lt;No /Users/karthik/Documents/Office/Pods/AppImageViewer/Gemfile.lock found&gt;&#10;```&#10;&#10;--- TEMPLATE END ----------------------------------------------------------------&#10;&#10;Unfortunately, an unexpected error occurred, and Bundler cannot continue.&#10;&#10;First, try this link to see if there are any existing issue reports for this error:&#10;https://github.com/bundler/bundler/search?q=can%27t+find+gem+bundler+%28%3D+2.1.4%29+with+executable+bundle&amp;type=Issues&#10;&#10;If there aren't any reports for this error yet, please create copy and paste the report template above into a new issue. Don't forget to anonymize any private data! The new issue form is located at:&#10;https://github.com/bundler/bundler/issues/new&#10;" />
         
       </testcase>
     
